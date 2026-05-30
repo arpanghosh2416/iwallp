@@ -11,6 +11,7 @@ import {
   InvGR,
   SecGR,
   NRI,
+  Foreinsic
 } from "../../components";
 
 
@@ -38,6 +39,7 @@ const HomePage = (props) => {
       <Header />
       <MissionVisionValues />
       <Services />
+      <Foreinsic />
       <NRI />
       <TeamSlider />
       <Contact />

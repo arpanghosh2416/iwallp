@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import Certificate from "./Certificate";
 
 import { Section, Container, Modal } from "../shared";
-import { FaSearch, FaShieldAlt } from "react-icons/fa";
 import { pillar } from "../../assets";
 
 import "slick-carousel/slick/slick.css";
@@ -28,28 +27,10 @@ const imageMap = {
     "Amiya-Kumar-Lahiri-500x500.webp":""
 };
 
-const services = [
-  {
-    icon: <FaSearch className="text-3xl text-secondary" />,
-    title: "INVESTIGATION",
-    urlPath: "/private-investigation-kolkata",
-    description:
-      "Uncovering truth, gathering evidence, solving mysteries, ensuring accountability, delivering justice.",
-  },
-  {
-    icon: <FaShieldAlt className="text-3xl text-secondary" />,
-    title: "PERSONAL SECURITY",
-    urlPath: "/security-guard-services-kolkata",
-    description:
-      "Protecting lives, securing assets, ensuring safety, providing peace of mind and confidence.",
-  },
-];
-
 const TeamSlider = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [selectedMember, setSelectedMember] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const updatedData = pillar.map((selectedMember) => ({
