@@ -10,6 +10,7 @@ import {
   ScrollToTop,
   WhatsAppPopup,
   JsonLdSchema,
+  TranslatorWidget,
 } from "./components";
 
 import "./App.css";
@@ -51,6 +52,9 @@ export const App = (props) => {
       
         <WhatsAppPopup />
         <ScrollToTop />
+        <div style={{ position: "fixed", bottom: 24, left: 16, zIndex: 999 }}>
+          <TranslatorWidget />
+        </div>
         <Navbar />
         <Outlet />
         <Footer />
