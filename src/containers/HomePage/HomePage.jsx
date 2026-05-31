@@ -8,8 +8,6 @@ import {
   TeamSlider,
   Testimonials,
   MissionVisionValues,
-  InvGR,
-  SecGR,
   NRI,
   Foreinsic
 } from "../../components";
@@ -44,8 +42,6 @@ const HomePage = (props) => {
       <TeamSlider />
       <Contact />
       <Testimonials />
-      <InvGR />
-      <SecGR />
 
       
     </main>
