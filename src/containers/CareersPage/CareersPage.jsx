@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
-import TranslatorWidget from "../../components/TranslatorWidget/TranslatorWidget";
+
 
 // ─── DATA ───
 const quickStats = [
@@ -251,9 +251,8 @@ export default function CareersPage() {
         #google_translate_element { display: none !important; }
       `}</style>
 
-      {/* Google Translate mounts itself via TranslatorWidget */}
-
-      {/* ── STICKY FLOATING BUTTONS (WhatsApp + Call + Apply + Translator) ── */}
+     
+      {/* ── STICKY FLOATING BUTTONS (WhatsApp + Call + Apply ) ── */}
       <AnimatePresence>
         {stickyVisible && (
           <motion.div
@@ -266,8 +265,7 @@ export default function CareersPage() {
               display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end"
             }}
           >
-            {/* Language Translator */}
-            <TranslatorWidget />
+        
 
             <a href="https://wa.me/919073672051" target="_blank" rel="noreferrer"
               className="btn-gold pulse"
