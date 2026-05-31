@@ -34,21 +34,9 @@ const benefits = [
 ];
 
 const trustPhotos = [
-  {
-    src: "https://innerworkadvisorsllp.com/images/careers/Security2.webp",
-    label: "On-Site Deployment",
-    tag: "Real Guards",
-  },
-  {
-    src: "https://innerworkadvisorsllp.com/images/careers/Security1.webp",
-    label: "Our Security Team",
-    tag: "In Uniform",
-  },
-  {
-    src: "https://innerworkadvisorsllp.com/images/team.webp",
-    label: "Innerwork Team",
-    tag: "Leadership",
-  },
+  { src: "https://innerworkadvisorsllp.com/images/careers/Security2.webp", label: "On-Site Deployment", tag: "Real Guards" },
+  { src: "https://innerworkadvisorsllp.com/images/careers/Security1.webp", label: "Our Security Team", tag: "In Uniform" },
+  { src: "https://innerworkadvisorsllp.com/images/team.webp", label: "Innerwork Team", tag: "Leadership" },
 ];
 
 const faqs = [
@@ -65,71 +53,200 @@ const faqs = [
 ];
 
 // ─── ANIMATION VARIANTS ───
-const fadeUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-const cardVariant = {
-  hidden: { opacity: 0, y: 36, scale: 0.97 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-};
+const fadeUp = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } };
+const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
+const cardVariant = { hidden: { opacity: 0, y: 36, scale: 0.97 }, visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } };
 
-// ─── ANIMATED SECTION WRAPPER ───
 function AnimSection({ children }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <motion.div ref={ref} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}>
-      {children}
-    </motion.div>
-  );
+  return <motion.div ref={ref} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}>{children}</motion.div>;
 }
 
-// ─── SECTION HEADING ───
 function SectionHeading({ label, title, subtitle, light = false }) {
   return (
     <div style={{ textAlign: "center", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        style={{ color: "#C9A267", fontFamily: "'Cinzel', serif", letterSpacing: "0.15em", fontSize: "clamp(0.65rem, 2vw, 0.8rem)", fontWeight: 600, textTransform: "uppercase", marginBottom: "0.4rem" }}
-      >
+      <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+        style={{ color: "#C9A267", fontFamily: "'Cinzel', serif", letterSpacing: "0.15em", fontSize: "clamp(0.65rem, 2vw, 0.8rem)", fontWeight: 600, textTransform: "uppercase", marginBottom: "0.4rem" }}>
         {label}
       </motion.p>
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 5vw, 2.8rem)", fontWeight: 700, color: light ? "#fff" : "#1a2744", lineHeight: 1.2, marginBottom: "0.75rem" }}
-      >
+      <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+        style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 5vw, 2.8rem)", fontWeight: 700, color: light ? "#fff" : "#1a2744", lineHeight: 1.2, marginBottom: "0.75rem" }}>
         {title}
       </motion.h2>
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        style={{ height: 3, width: 50, background: "linear-gradient(90deg, #C9A267, #a07d45)", borderRadius: 99, margin: "0 auto 1rem" }}
-      />
+      <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+        style={{ height: 3, width: 50, background: "linear-gradient(90deg, #C9A267, #a07d45)", borderRadius: 99, margin: "0 auto 1rem" }} />
       {subtitle && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          style={{ color: light ? "rgba(255,255,255,0.72)" : "#555", maxWidth: 560, margin: "0 auto", lineHeight: 1.7, fontSize: "clamp(0.85rem, 2.5vw, 1rem)" }}
-        >
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
+          style={{ color: light ? "rgba(255,255,255,0.72)" : "#555", maxWidth: 560, margin: "0 auto", lineHeight: 1.7, fontSize: "clamp(0.85rem, 2.5vw, 1rem)" }}>
           {subtitle}
         </motion.p>
       )}
     </div>
+  );
+}
+
+// ─── LANGUAGE TRANSLATOR WIDGET (Cookie-based — 100% reliable) ───
+const LANGS = [
+  { code: "en",  label: "English", native: "English", flag: "🇬🇧" },
+  { code: "hi",  label: "Hindi",   native: "हिंदी",   flag: "🇮🇳" },
+  { code: "bn",  label: "Bengali", native: "বাংলা",   flag: "🇧🇩" },
+];
+
+function getCookieLang() {
+  // googtrans cookie format: /en/hi  or /auto/bn
+  try {
+    const m = document.cookie.match(/googtrans=\/[a-z-]+\/([a-z-]+)/);
+    return m ? m[1] : "en";
+  } catch { return "en"; }
+}
+
+function setGoogTransCookie(langCode) {
+  // Must set on both hostname and root domain for reliability
+  const val = langCode === "en" ? "/en/en" : `/en/${langCode}`;
+  const host = window.location.hostname;
+  document.cookie = `googtrans=${val};path=/;domain=${host}`;
+  document.cookie = `googtrans=${val};path=/`;
+}
+
+function TranslatorWidget() {
+  const [open, setOpen]         = useState(false);
+  const [activeLang, setActive] = useState(() => getCookieLang());
+  const widgetRef               = useRef(null);
+
+  // Inject GT script once — it auto-reads the cookie on load
+  useEffect(() => {
+    if (document.getElementById("gt-script")) return;
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        { pageLanguage: "en", includedLanguages: "hi,bn,en", autoDisplay: false },
+        "gt-root"
+      );
+    };
+    const s   = document.createElement("script");
+    s.id      = "gt-script";
+    s.src     = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    s.async   = true;
+    document.body.appendChild(s);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const h = (e) => { if (widgetRef.current && !widgetRef.current.contains(e.target)) setOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, []);
+
+  const switchLang = (code) => {
+    setActive(code);
+    setOpen(false);
+    setGoogTransCookie(code);
+    // Small delay so cookie is definitely written before reload
+    setTimeout(() => window.location.reload(), 80);
+  };
+
+  const current = LANGS.find(l => l.code === activeLang) || LANGS[0];
+
+  return (
+    <>
+      {/* Hidden GT mount point */}
+      <div id="gt-root" style={{ display: "none" }} />
+
+      {/* Suppress the Google bar that shifts layout */}
+      <style>{`
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-te-banner-frame               { display: none !important; }
+        body                                 { top: 0px !important; }
+        .skiptranslate                       { display: none !important; }
+      `}</style>
+
+      <div ref={widgetRef} style={{ position: "relative" }}>
+        {/* ── Pill trigger ── */}
+        <motion.button
+          onClick={() => setOpen(o => !o)}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          aria-label="Select language"
+          style={{
+            display: "flex", alignItems: "center", gap: 7,
+            background: "linear-gradient(135deg,#1a2744,#243a6e)",
+            border: "1.5px solid rgba(201,162,103,0.6)",
+            borderRadius: 50, padding: "9px 16px",
+            cursor: "pointer", color: "#C9A267",
+            fontFamily: "'Lato',sans-serif", fontWeight: 700,
+            fontSize: "clamp(0.72rem,2vw,0.82rem)", letterSpacing: "0.04em",
+            whiteSpace: "nowrap", boxShadow: "0 4px 18px rgba(0,0,0,0.28)",
+            WebkitTapHighlightColor: "transparent",
+          }}
+        >
+          <span style={{ fontSize: "1rem" }}>🌐</span>
+          <span>{current.flag} {current.native}</span>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            style={{ fontSize: "0.6rem", opacity: 0.65, lineHeight: 1 }}
+          >▼</motion.span>
+        </motion.button>
+
+        {/* ── Dropdown ── */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -6, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.96 }}
+              transition={{ duration: 0.18, ease: [0.22,1,0.36,1] }}
+              style={{
+                position: "absolute", bottom: "calc(100% + 10px)", right: 0,
+                background: "#0f1f3d", border: "1px solid rgba(201,162,103,0.38)",
+                borderRadius: 14, overflow: "hidden", minWidth: 178,
+                boxShadow: "0 16px 50px rgba(0,0,0,0.45)", zIndex: 20,
+              }}
+            >
+              <div style={{ padding: "8px 14px 6px", borderBottom: "1px solid rgba(201,162,103,0.12)" }}>
+                <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  Select Language
+                </p>
+              </div>
+
+              {LANGS.map(l => (
+                <button
+                  key={l.code}
+                  onClick={() => switchLang(l.code)}
+                  style={{
+                    width: "100%", display: "flex", alignItems: "center", gap: 11,
+                    padding: "12px 16px",
+                    background: activeLang === l.code ? "rgba(201,162,103,0.14)" : "transparent",
+                    border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+                    cursor: "pointer", textAlign: "left",
+                    fontFamily: "'Lato',sans-serif",
+                    WebkitTapHighlightColor: "transparent",
+                    transition: "background 0.18s",
+                  }}
+                  onMouseEnter={e => { if (activeLang !== l.code) e.currentTarget.style.background = "rgba(201,162,103,0.08)"; }}
+                  onMouseLeave={e => { if (activeLang !== l.code) e.currentTarget.style.background = "transparent"; }}
+                >
+                  <span style={{ fontSize: "1.3rem", lineHeight: 1 }}>{l.flag}</span>
+                  <div style={{ flex: 1 }}>
+                    <p style={{ color: "#C9A267", fontWeight: 700, fontSize: "0.85rem", lineHeight: 1.2 }}>{l.native}</p>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.68rem", marginTop: 1 }}>{l.label}</p>
+                  </div>
+                  {activeLang === l.code && (
+                    <span style={{ color: "#C9A267", fontSize: "0.85rem", fontWeight: 700 }}>✓</span>
+                  )}
+                </button>
+              ))}
+
+              <div style={{ padding: "7px 14px", background: "rgba(0,0,0,0.2)" }}>
+                <p style={{ color: "rgba(255,255,255,0.22)", fontSize: "0.6rem", textAlign: "center" }}>
+                  Powered by Google Translate
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 }
 
@@ -150,12 +267,10 @@ export default function CareersPage() {
   }, []);
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
-
   const handleWhatsApp = () => {
     const msg = `Hello Innerwork Advisors, I want to apply for Security Guard.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AAge: ${form.age}%0AArea: ${form.location}%0APreferred Area: ${form.preferredArea}%0AExperience: ${form.experience}`;
     window.open(`https://wa.me/919073672051?text=${msg}`);
   };
-
   const handleEmail = () => {
     const subject = `Security Guard Application – ${form.name}`;
     const body = `Name: ${form.name}%0APhone: ${form.phone}%0AAge: ${form.age}%0AArea: ${form.location}%0APreferred Area: ${form.preferredArea}%0AExperience: ${form.experience}`;
@@ -168,30 +283,19 @@ export default function CareersPage() {
     <div style={{ fontFamily: "'Lato', sans-serif", overflowX: "hidden", background: "#f9f8f6" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         img { max-width: 100%; display: block; }
+        :root { --navy: #1a2744; --navy2: #243a6e; --gold: #C9A267; --gold2: #a07d45; --bg: #f9f8f6; }
 
-        :root {
-          --navy: #1a2744;
-          --navy2: #243a6e;
-          --gold: #C9A267;
-          --gold2: #a07d45;
-          --bg: #f9f8f6;
-        }
-
-        /* ── BUTTONS ── */
         .btn-gold {
           display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-          background: linear-gradient(135deg, #C9A267, #a07d45);
-          color: #fff; border: none; padding: 14px 28px;
-          border-radius: 5px; font-weight: 700; font-size: clamp(0.78rem, 2.5vw, 0.9rem);
-          letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-          transition: transform 0.25s, box-shadow 0.25s; text-decoration: none;
+          background: linear-gradient(135deg, #C9A267, #a07d45); color: #fff; border: none;
+          padding: 14px 28px; border-radius: 5px; font-weight: 700;
+          font-size: clamp(0.78rem, 2.5vw, 0.9rem); letter-spacing: 0.06em; text-transform: uppercase;
+          cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; text-decoration: none;
           font-family: 'Lato', sans-serif; white-space: nowrap;
-          box-shadow: 0 4px 18px rgba(201,162,103,0.38);
-          -webkit-tap-highlight-color: transparent;
+          box-shadow: 0 4px 18px rgba(201,162,103,0.38); -webkit-tap-highlight-color: transparent;
         }
         .btn-gold:hover, .btn-gold:active { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,103,0.5); }
 
@@ -201,8 +305,7 @@ export default function CareersPage() {
           padding: 12px 24px; border-radius: 5px; font-weight: 700;
           font-size: clamp(0.78rem, 2.5vw, 0.9rem); letter-spacing: 0.06em; text-transform: uppercase;
           cursor: pointer; transition: all 0.25s; text-decoration: none;
-          font-family: 'Lato', sans-serif; white-space: nowrap;
-          -webkit-tap-highlight-color: transparent;
+          font-family: 'Lato', sans-serif; white-space: nowrap; -webkit-tap-highlight-color: transparent;
         }
         .btn-navy:hover { background: transparent; color: var(--navy); }
 
@@ -212,17 +315,11 @@ export default function CareersPage() {
           padding: 12px 22px; border-radius: 5px; font-weight: 700;
           font-size: clamp(0.78rem, 2.5vw, 0.88rem); letter-spacing: 0.05em; text-transform: uppercase;
           cursor: pointer; transition: all 0.25s; text-decoration: none;
-          font-family: 'Lato', sans-serif; white-space: nowrap;
-          -webkit-tap-highlight-color: transparent;
+          font-family: 'Lato', sans-serif; white-space: nowrap; -webkit-tap-highlight-color: transparent;
         }
         .btn-outline:hover, .btn-outline:active { background: rgba(255,255,255,0.12); border-color: #fff; }
 
-        /* ── PARTICLES ── */
-        .particle {
-          position: absolute; border-radius: 50%;
-          background: rgba(201,162,103,0.13); pointer-events: none;
-          animation: floatUp linear infinite;
-        }
+        .particle { position: absolute; border-radius: 50%; background: rgba(201,162,103,0.13); pointer-events: none; animation: floatUp linear infinite; }
         @keyframes floatUp {
           0%   { transform: translateY(105vh) rotate(0deg); opacity: 0; }
           8%   { opacity: 1; }
@@ -230,14 +327,12 @@ export default function CareersPage() {
           100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
         }
 
-        /* ── PULSE ── */
         .pulse { animation: pulse-ring 2.2s ease-in-out infinite; }
         @keyframes pulse-ring {
           0%,100% { box-shadow: 0 0 0 0 rgba(201,162,103,0.45); }
           50%      { box-shadow: 0 0 0 10px rgba(201,162,103,0); }
         }
 
-        /* ── SHIMMER ON BENEFIT CARDS ── */
         .shimmer-card { position: relative; overflow: hidden; }
         .shimmer-card::after {
           content: ''; position: absolute; inset: 0;
@@ -246,43 +341,37 @@ export default function CareersPage() {
         }
         @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-        /* ── HOVER LIFT ── */
         .lift { transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s; }
         .lift:hover { transform: translateY(-5px); box-shadow: 0 18px 45px rgba(26,39,68,0.13); }
 
-        /* ── FORM FIELDS ── */
-        .field { width: 100%; padding: 13px 15px; border: 1.5px solid #d8d3c8;
+        .field {
+          width: 100%; padding: 13px 15px; border: 1.5px solid #d8d3c8;
           border-radius: 7px; font-size: clamp(0.88rem, 3vw, 0.95rem);
           font-family: 'Lato', sans-serif; color: #1a2744; background: #fff; outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s; }
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
         .field:focus { border-color: #C9A267; box-shadow: 0 0 0 3px rgba(201,162,103,0.15); }
+        .flabel { display: block; margin-bottom: 6px; font-size: clamp(0.78rem, 2.5vw, 0.85rem); font-weight: 700; color: #1a2744; letter-spacing: 0.04em; }
 
-        .flabel { display: block; margin-bottom: 6px; font-size: clamp(0.78rem, 2.5vw, 0.85rem);
-          font-weight: 700; color: #1a2744; letter-spacing: 0.04em; }
-
-        /* ── FAQ ── */
         .faq-row { border-bottom: 1px solid #e8e4da; }
-        .faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center;
+        .faq-btn {
+          width: 100%; display: flex; justify-content: space-between; align-items: center;
           padding: 17px 0; background: transparent; border: none; cursor: pointer;
           text-align: left; gap: 14px; font-family: 'Lato', sans-serif;
-          -webkit-tap-highlight-color: transparent; }
+          -webkit-tap-highlight-color: transparent;
+        }
 
-        /* ── TRUST GALLERY ── */
-        .trust-img { width: 100%; height: 100%; object-fit: cover; display: block;
-          transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+        .trust-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
         .trust-wrap:hover .trust-img { transform: scale(1.04); }
         .trust-wrap { overflow: hidden; border-radius: 14px; position: relative; }
 
-        /* ── SECTION PADDING ── */
         .sec { padding: clamp(48px, 8vw, 90px) clamp(16px, 5vw, 40px); }
 
-        /* ── GRID HELPERS ── */
         .grid-snap { display: grid; gap: clamp(12px, 3vw, 20px); }
         .g2 { grid-template-columns: repeat(2, 1fr); }
         .g3 { grid-template-columns: repeat(3, 1fr); }
         .g4 { grid-template-columns: repeat(4, 1fr); }
 
-        /* ── RESPONSIVE OVERRIDES (mobile-first) ── */
         @media (max-width: 479px) {
           .g2, .g3, .g4 { grid-template-columns: 1fr !important; }
           .about-grid { grid-template-columns: 1fr !important; }
@@ -316,9 +405,18 @@ export default function CareersPage() {
           .trust-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .contact-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
+
+        /* Hide Google Translate toolbar */
+        .goog-te-banner-frame { display: none !important; }
+        .skiptranslate { display: none !important; }
+        body { top: 0 !important; }
+        .goog-te-gadget { display: none !important; }
+        #google_translate_element { display: none !important; }
       `}</style>
 
-      {/* ── STICKY FLOATING BUTTONS ── */}
+      {/* Google Translate mounts itself via TranslatorWidget */}
+
+      {/* ── STICKY FLOATING BUTTONS (WhatsApp + Call + Apply + Translator) ── */}
       <AnimatePresence>
         {stickyVisible && (
           <motion.div
@@ -326,18 +424,22 @@ export default function CareersPage() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 90, opacity: 0 }}
             transition={{ type: "spring", stiffness: 280, damping: 28 }}
-            style={{ position: "fixed", bottom: 100, right: 16, zIndex: 999, display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" }}
+            style={{
+              position: "fixed", bottom: 92, right: 16, zIndex: 999,
+              display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end"
+            }}
           >
+            {/* Language Translator */}
+            <TranslatorWidget />
+
             <a href="https://wa.me/919073672051" target="_blank" rel="noreferrer"
               className="btn-gold pulse"
               style={{ borderRadius: "50%", padding: "15px", fontSize: "1.25rem", lineHeight: 1, minWidth: 0 }}
-              aria-label="WhatsApp"
-            >💬</a>
+              aria-label="WhatsApp">💬</a>
             <a href="tel:+919073672051"
               className="btn-navy"
               style={{ borderRadius: "50%", padding: "15px", fontSize: "1.25rem", lineHeight: 1, minWidth: 0 }}
-              aria-label="Call"
-            >📞</a>
+              aria-label="Call">📞</a>
             <a href="#apply" className="btn-gold" style={{ borderRadius: 5, padding: "12px 22px", fontSize: "0.82rem" }}>
               Apply Now
             </a>
@@ -345,7 +447,7 @@ export default function CareersPage() {
         )}
       </AnimatePresence>
 
-      {/* ─────────────────────────────── HERO ─────────────────────────────── */}
+      {/* ─────────────────────── HERO ─────────────────────────── */}
       <section style={{
         position: "relative", minHeight: "100svh", display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center", overflow: "hidden",
@@ -358,20 +460,17 @@ export default function CareersPage() {
             animationDuration: `${9 + (i % 6) * 3}s`, animationDelay: `${(i * 1.4) % 8}s`,
           }} />
         ))}
-        {/* Grid overlay */}
         <div style={{ position: "absolute", inset: 0, opacity: 0.05, pointerEvents: "none",
           backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 58px,rgba(201,162,103,0.6) 58px,rgba(201,162,103,0.6) 59px),repeating-linear-gradient(90deg,transparent,transparent 58px,rgba(201,162,103,0.6) 58px,rgba(201,162,103,0.6) 59px)"
         }} />
-        {/* Corner marks */}
-        {[{t:0,l:0,bt:"3px solid #C9A267",bl:"3px solid #C9A267"},{t:0,r:0,bt:"3px solid #C9A267",br:"3px solid #C9A267"},{b:0,l:0,bb:"3px solid #C9A267",bl:"3px solid #C9A267"},{b:0,r:0,bb:"3px solid #C9A267",br:"3px solid #C9A267"}].map((s,i)=>(
+        {[{top:0,left:0,borderTop:"3px solid #C9A267",borderLeft:"3px solid #C9A267"},{top:0,right:0,borderTop:"3px solid #C9A267",borderRight:"3px solid #C9A267"},{bottom:0,left:0,borderBottom:"3px solid #C9A267",borderLeft:"3px solid #C9A267"},{bottom:0,right:0,borderBottom:"3px solid #C9A267",borderRight:"3px solid #C9A267"}].map((s,i)=>(
           <div key={i} style={{ position:"absolute", width:80, height:80, opacity:0.45, ...s }} />
         ))}
 
-        <motion.div style={{ opacity: heroOpacity, y: heroY, position: "relative", zIndex: 2, textAlign: "center", padding: "clamp(1rem,5vw,2.5rem) clamp(1rem,5vw,2rem)", maxWidth: 860, width: "100%" }}>
-          {/* Urgency pill */}
+        <motion.div style={{ opacity: heroOpacity, y: heroY, position: "relative", zIndex: 2, textAlign: "center", padding: "clamp(4rem,8vw,5rem) clamp(1rem,5vw,2rem) clamp(1rem,5vw,2.5rem)", maxWidth: 860, width: "100%" }}>
           <motion.div initial={{ opacity:0, y:-18 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
             className="pulse"
-            style={{ display:"inline-flex", alignItems:"center", gap:10, background:"rgba(201,162,103,0.14)", border:"1px solid #C9A267", borderRadius:50, padding:"7px 18px", marginBottom:"clamp(1rem,3vw,1.8rem)", marginTop:"4rem" }}>
+            style={{ display:"inline-flex", alignItems:"center", gap:10, background:"rgba(201,162,103,0.14)", border:"1px solid #C9A267", borderRadius:50, padding:"7px 18px", marginBottom:"clamp(1rem,3vw,1.8rem)", marginTop:88}}>
             <span style={{ width:7, height:7, borderRadius:"50%", background:"#C9A267", display:"inline-block", flexShrink:0 }} />
             <span style={{ color:"#C9A267", fontSize:"clamp(0.68rem,2.2vw,0.8rem)", fontWeight:700, letterSpacing:"0.14em", textTransform:"uppercase" }}>
               🔔 Urgent Hiring Ongoing • Kolkata & Nearby Areas
@@ -402,9 +501,7 @@ export default function CareersPage() {
           <motion.div initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.5 }}
             className="hero-badges"
             style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-            <a href="#apply" className="btn-gold" style={{ fontSize:"clamp(0.85rem,2.5vw,1rem)", padding:"clamp(12px,3vw,16px) clamp(24px,5vw,40px)" }}>
-              Apply Now →
-            </a>
+            <a href="#apply" className="btn-gold" style={{ fontSize:"clamp(0.85rem,2.5vw,1rem)", padding:"clamp(12px,3vw,16px) clamp(24px,5vw,40px)" }}>Apply Now →</a>
             <a href="tel:+919073672051" className="btn-outline">📞 Call Us</a>
             <a href="https://wa.me/919073672051?text=Hi%20I%20want%20to%20apply%20for%20Security%20Guard%20at%20Innerwork" target="_blank" rel="noreferrer" className="btn-outline">💬 WhatsApp</a>
           </motion.div>
@@ -417,7 +514,6 @@ export default function CareersPage() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll mouse */}
         <motion.div animate={{ y:[0,9,0] }} transition={{ repeat:Infinity, duration:1.9 }}
           style={{ position:"absolute", bottom:22, left:"50%", transform:"translateX(-50%)", zIndex:2 }}>
           <div style={{ width:22, height:36, border:"2px solid rgba(201,162,103,0.45)", borderRadius:11, display:"flex", justifyContent:"center", paddingTop:5 }}>
@@ -430,8 +526,7 @@ export default function CareersPage() {
       <section className="sec" style={{ background:"#fff" }}>
         <div style={{ maxWidth:1100, margin:"0 auto" }}>
           <AnimSection><SectionHeading label="Job Overview" title="Quick Job Snapshot" subtitle="Everything you need to know at a glance." /></AnimSection>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }}
-            className="grid-snap g4">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }} className="grid-snap g4">
             {quickStats.map((s,i)=>(
               <motion.div key={i} variants={cardVariant} className="lift"
                 style={{ background:"linear-gradient(135deg,#1a2744,#243a6e)", borderRadius:12, padding:"clamp(16px,3vw,24px) clamp(12px,2.5vw,20px)", textAlign:"center", border:"1px solid rgba(201,162,103,0.2)" }}>
@@ -450,9 +545,7 @@ export default function CareersPage() {
           <div className="grid-snap about-grid" style={{ gap:"clamp(28px,5vw,60px)", alignItems:"center" }}>
             <motion.div initial={{ opacity:0, x:-40 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}>
               <p style={{ color:"#C9A267", fontFamily:"'Cinzel',serif", letterSpacing:"0.15em", fontSize:"clamp(0.65rem,2vw,0.8rem)", fontWeight:600, textTransform:"uppercase", marginBottom:"0.6rem" }}>About Us</p>
-              <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(1.5rem,4vw,2.5rem)", fontWeight:700, color:"#1a2744", lineHeight:1.2, marginBottom:"1.2rem" }}>
-                The Backbone of Safety & Discipline
-              </h2>
+              <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(1.5rem,4vw,2.5rem)", fontWeight:700, color:"#1a2744", lineHeight:1.2, marginBottom:"1.2rem" }}>The Backbone of Safety & Discipline</h2>
               <div style={{ height:3, width:55, background:"linear-gradient(90deg,#C9A267,#a07d45)", borderRadius:99, marginBottom:"1.2rem" }} />
               <p style={{ color:"#555", lineHeight:1.8, marginBottom:"0.9rem", fontSize:"clamp(0.88rem,2.3vw,0.97rem)" }}>
                 At Innerwork Advisors LLP, we believe security personnel are the backbone of safety and discipline. We provide professional security services across residential complexes, offices, malls, commercial establishments, and events.
@@ -469,7 +562,6 @@ export default function CareersPage() {
                 ))}
               </div>
             </motion.div>
-
             <motion.div initial={{ opacity:0, scale:0.92 }} whileInView={{ opacity:1, scale:1 }} viewport={{ once:true }} transition={{ duration:0.75 }}>
               <div style={{ background:"linear-gradient(135deg,#1a2744,#243a6e)", borderRadius:16, padding:"clamp(24px,4vw,40px) clamp(20px,4vw,36px)", position:"relative", overflow:"hidden" }}>
                 <div style={{ position:"absolute", top:0, right:0, width:80, height:80, borderTop:"3px solid #C9A267", borderRight:"3px solid #C9A267", opacity:0.4, borderRadius:"0 16px 0 0" }} />
@@ -491,8 +583,7 @@ export default function CareersPage() {
       <section className="sec" style={{ background:"#fff" }}>
         <div style={{ maxWidth:1100, margin:"0 auto" }}>
           <AnimSection><SectionHeading label="What You'll Do" title="Key Responsibilities" subtitle="Your daily duties as a Security Guard at Innerwork Advisors LLP." /></AnimSection>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }}
-            className="grid-snap g3">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }} className="grid-snap g3">
             {responsibilities.map((r,i)=>(
               <motion.div key={i} variants={cardVariant} className="lift"
                 style={{ background:"#f9f8f6", border:"1px solid #e8e4da", borderLeft:"4px solid #C9A267", borderRadius:12, padding:"clamp(18px,3vw,28px) clamp(16px,3vw,24px)" }}>
@@ -512,8 +603,7 @@ export default function CareersPage() {
         }} />
         <div style={{ maxWidth:1100, margin:"0 auto", position:"relative", zIndex:1 }}>
           <AnimSection><SectionHeading label="Why Join Us" title="Why Candidates Prefer Innerwork" subtitle="We don't just offer a job — we offer stability, dignity, and growth." light /></AnimSection>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }}
-            className="grid-snap g4">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }} className="grid-snap g4">
             {benefits.map((b,i)=>(
               <motion.div key={i} variants={cardVariant} className="lift shimmer-card"
                 style={{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(201,162,103,0.22)", borderRadius:12, padding:"clamp(18px,3vw,26px) clamp(14px,2.5vw,20px)", textAlign:"center", backdropFilter:"blur(8px)" }}>
@@ -555,7 +645,6 @@ export default function CareersPage() {
                 </motion.div>
               ))}
             </motion.div>
-
             <motion.div initial={{ opacity:0, x:30 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}>
               <div style={{ background:"#fff", borderRadius:16, padding:"clamp(20px,4vw,32px)", border:"1px solid #e8e4da", boxShadow:"0 8px 35px rgba(26,39,68,0.08)", marginBottom:20 }}>
                 <h3 style={{ fontFamily:"'Playfair Display',serif", color:"#1a2744", fontSize:"clamp(1rem,3vw,1.3rem)", fontWeight:700, marginBottom:16 }}>📄 Documents Required</h3>
@@ -580,79 +669,36 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ─────────── TRUST ELEMENTS (NEW SECTION 6) ─────────── */}
+      {/* ─────────── TRUST ELEMENTS ─────────── */}
       <section className="sec" style={{ background:"#fff" }}>
         <div style={{ maxWidth:1100, margin:"0 auto" }}>
           <AnimSection>
-            <SectionHeading
-              label="Real People. Real Work."
-              title="Our Guards in Action"
-              subtitle="See our deployed security personnel, uniformed teams, and professional work environments across Kolkata."
-            />
+            <SectionHeading label="Real People. Real Work." title="Our Guards in Action" subtitle="See our deployed security personnel, uniformed teams, and professional work environments across Kolkata." />
           </AnimSection>
-
-          {/* Main 3-col photo grid */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once:true, margin:"-50px" }}
-            className="grid-snap trust-grid"
-            style={{ marginBottom:"clamp(24px,4vw,36px)" }}
-          >
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true, margin:"-50px" }}
+            className="grid-snap trust-grid" style={{ marginBottom:"clamp(24px,4vw,36px)" }}>
             {trustPhotos.map((p,i)=>(
               <motion.div key={i} variants={cardVariant} className="trust-wrap lift"
-                style={{ aspectRatio: i === 0 ? "4/5" : "4/5", position:"relative", borderRadius:14 }}>
-                <img
-                  src={p.src}
-                  alt={p.label}
-                  className="trust-img"
-                  loading="lazy"
+                style={{ aspectRatio:"4/5", position:"relative", borderRadius:14 }}>
+                <img src={p.src} alt={p.label} className="trust-img" loading="lazy"
                   onError={e => {
                     e.target.style.display = "none";
                     e.target.parentElement.style.background = "linear-gradient(135deg,#1a2744,#243a6e)";
-                    const placeholder = document.createElement("div");
-                    placeholder.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;padding:24px"><span style="font-size:3rem">🛡️</span><p style="color:#C9A267;font-weight:700;font-family:'Playfair Display',serif;font-size:1.1rem;text-align:center">${p.label}</p></div>`;
-                    e.target.parentElement.appendChild(placeholder.firstChild);
+                    const ph = document.createElement("div");
+                    ph.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;gap:12px;padding:24px"><span style="font-size:3rem">🛡️</span><p style="color:#C9A267;font-weight:700;font-family:serif;font-size:1.1rem;text-align:center">${p.label}</p></div>`;
+                    e.target.parentElement.appendChild(ph.firstChild);
                   }}
                 />
-                {/* Overlay label */}
-                <div style={{
-                  position:"absolute", bottom:0, left:0, right:0,
-                  background:"linear-gradient(0deg, rgba(10,18,35,0.88) 0%, transparent 100%)",
-                  borderRadius:"0 0 14px 14px",
-                  padding:"clamp(14px,3vw,22px) clamp(14px,3vw,20px)"
-                }}>
-                  <span style={{ display:"inline-block", background:"#C9A267", color:"#0b1629", fontSize:"clamp(0.62rem,1.8vw,0.7rem)", fontWeight:800, letterSpacing:"0.12em", textTransform:"uppercase", borderRadius:50, padding:"3px 10px", marginBottom:6 }}>
-                    {p.tag}
-                  </span>
+                <div style={{ position:"absolute", bottom:0, left:0, right:0, background:"linear-gradient(0deg,rgba(10,18,35,0.88) 0%,transparent 100%)", borderRadius:"0 0 14px 14px", padding:"clamp(14px,3vw,22px) clamp(14px,3vw,20px)" }}>
+                  <span style={{ display:"inline-block", background:"#C9A267", color:"#0b1629", fontSize:"clamp(0.62rem,1.8vw,0.7rem)", fontWeight:800, letterSpacing:"0.12em", textTransform:"uppercase", borderRadius:50, padding:"3px 10px", marginBottom:6 }}>{p.tag}</span>
                   <p style={{ color:"#fff", fontFamily:"'Playfair Display',serif", fontWeight:700, fontSize:"clamp(0.9rem,2.5vw,1.05rem)" }}>{p.label}</p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Trust stats row */}
-          <motion.div
-            initial={{ opacity:0, y:24 }}
-            whileInView={{ opacity:1, y:0 }}
-            viewport={{ once:true }}
-            transition={{ duration:0.6 }}
-            style={{
-              background:"linear-gradient(135deg,#1a2744,#243a6e)",
-              borderRadius:16, padding:"clamp(20px,4vw,32px) clamp(20px,4vw,36px)",
-              display:"grid",
-              gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",
-              gap:"clamp(16px,3vw,24px)",
-              textAlign:"center"
-            }}
-          >
-            {[
-              { icon:"🏢", num:"50+", lbl:"Client Sites" },
-              { icon:"👮", num:"500+", lbl:"Guards Deployed" },
-              { icon:"🗓️", num:"10+", lbl:"Years Active" },
-              { icon:"👩‍✈️", num:"100+", lbl:"Female Guards" },
-            ].map((s,i)=>(
+          <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }}
+            style={{ background:"linear-gradient(135deg,#1a2744,#243a6e)", borderRadius:16, padding:"clamp(20px,4vw,32px) clamp(20px,4vw,36px)", display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))", gap:"clamp(16px,3vw,24px)", textAlign:"center" }}>
+            {[{ icon:"🏢", num:"50+", lbl:"Client Sites" },{ icon:"👮", num:"500+", lbl:"Guards Deployed" },{ icon:"🗓️", num:"10+", lbl:"Years Active" },{ icon:"👩‍✈️", num:"100+", lbl:"Female Guards" }].map((s,i)=>(
               <div key={i}>
                 <div style={{ fontSize:"clamp(1.5rem,3.5vw,2rem)", marginBottom:6 }}>{s.icon}</div>
                 <p style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(1.4rem,4vw,2rem)", fontWeight:900, color:"#C9A267", lineHeight:1 }}>{s.num}</p>
@@ -660,28 +706,12 @@ export default function CareersPage() {
               </div>
             ))}
           </motion.div>
-
-          {/* Women guards highlight */}
-          <motion.div
-            initial={{ opacity:0, y:24 }}
-            whileInView={{ opacity:1, y:0 }}
-            viewport={{ once:true }}
-            transition={{ duration:0.6, delay:0.15 }}
-            style={{
-              marginTop:"clamp(16px,3vw,24px)",
-              background:"rgba(201,162,103,0.08)", border:"1.5px solid #C9A267",
-              borderRadius:14, padding:"clamp(18px,3vw,26px) clamp(18px,3vw,28px)",
-              display:"flex", alignItems:"center", gap:"clamp(14px,3vw,20px)", flexWrap:"wrap"
-            }}
-          >
+          <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6, delay:0.15 }}
+            style={{ marginTop:"clamp(16px,3vw,24px)", background:"rgba(201,162,103,0.08)", border:"1.5px solid #C9A267", borderRadius:14, padding:"clamp(18px,3vw,26px) clamp(18px,3vw,28px)", display:"flex", alignItems:"center", gap:"clamp(14px,3vw,20px)", flexWrap:"wrap" }}>
             <span style={{ fontSize:"clamp(2rem,5vw,3rem)", flexShrink:0 }}>👩‍✈️</span>
             <div>
-              <h3 style={{ fontFamily:"'Playfair Display',serif", color:"#1a2744", fontSize:"clamp(1rem,3vw,1.2rem)", fontWeight:700, marginBottom:6 }}>
-                Women Guards — Proudly Deployed Across Kolkata
-              </h3>
-              <p style={{ color:"#555", fontSize:"clamp(0.82rem,2.2vw,0.9rem)", lineHeight:1.65 }}>
-                Innerwork Advisors LLP actively deploys female security guards at hospitals, schools, shopping malls, government offices, and residential complexes. We ensure a safe and respectful work environment for every team member.
-              </p>
+              <h3 style={{ fontFamily:"'Playfair Display',serif", color:"#1a2744", fontSize:"clamp(1rem,3vw,1.2rem)", fontWeight:700, marginBottom:6 }}>Women Guards — Proudly Deployed Across Kolkata</h3>
+              <p style={{ color:"#555", fontSize:"clamp(0.82rem,2.2vw,0.9rem)", lineHeight:1.65 }}>Innerwork Advisors LLP actively deploys female security guards at hospitals, schools, shopping malls, government offices, and residential complexes. We ensure a safe and respectful work environment for every team member.</p>
             </div>
           </motion.div>
         </div>
@@ -691,8 +721,6 @@ export default function CareersPage() {
       <section id="apply" className="sec" style={{ background:"#f9f8f6" }}>
         <div style={{ maxWidth:820, margin:"0 auto" }}>
           <AnimSection><SectionHeading label="Apply Now" title="Start Your Application" subtitle="Fill in just a few details. We'll contact you within 3–5 working days." /></AnimSection>
-
-          {/* WhatsApp strip */}
           <motion.div initial={{ opacity:0, y:18 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
             style={{ background:"linear-gradient(135deg,#25D366,#128C7E)", borderRadius:12, padding:"clamp(16px,3vw,20px) clamp(16px,4vw,28px)", marginBottom:"clamp(16px,3vw,28px)", display:"flex", alignItems:"center", justifyContent:"space-between", gap:14, flexWrap:"wrap" }}>
             <div>
@@ -704,7 +732,6 @@ export default function CareersPage() {
               💬 WhatsApp Now
             </a>
           </motion.div>
-
           <motion.div initial={{ opacity:0, y:28 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}
             style={{ background:"#fff", border:"1px solid #e8e4da", borderRadius:16, padding:"clamp(22px,5vw,40px) clamp(18px,5vw,36px)", boxShadow:"0 8px 38px rgba(26,39,68,0.08)" }}>
             <div className="form-grid grid-snap g2" style={{ marginBottom:18 }}>
@@ -763,9 +790,7 @@ export default function CareersPage() {
                 <AnimatePresence>
                   {openFaq===i && (
                     <motion.div initial={{ height:0, opacity:0 }} animate={{ height:"auto", opacity:1 }} exit={{ height:0, opacity:0 }} transition={{ duration:0.3, ease:[0.22,1,0.36,1] }} style={{ overflow:"hidden" }}>
-                      <p style={{ color:"#555", fontSize:"clamp(0.82rem,2.2vw,0.9rem)", lineHeight:1.7, padding:"0 clamp(14px,3vw,20px) clamp(14px,2.5vw,18px) clamp(14px,3vw,20px)" }}>
-                        {faq.a}
-                      </p>
+                      <p style={{ color:"#555", fontSize:"clamp(0.82rem,2.2vw,0.9rem)", lineHeight:1.7, padding:"0 clamp(14px,3vw,20px) clamp(14px,2.5vw,18px) clamp(14px,3vw,20px)" }}>{faq.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -779,8 +804,7 @@ export default function CareersPage() {
       <section className="sec" style={{ background:"linear-gradient(135deg,#0b1629,#1a2744)" }}>
         <div style={{ maxWidth:880, margin:"0 auto" }}>
           <AnimSection><SectionHeading label="Contact Us" title="Recruitment Helpline" light subtitle="Speak directly with our team Monday–Saturday, 9 AM – 7 PM" /></AnimSection>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true }}
-            className="grid-snap contact-grid">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once:true }} className="grid-snap contact-grid">
             {[
               { icon:"📞", label:"Call Us", value:"+91 90736 72051", sub:"Mon–Sat, 9AM–7PM", href:"tel:+919073672051" },
               { icon:"💬", label:"WhatsApp", value:"Send Name + Age + Area", sub:"Fastest response", href:"https://wa.me/919073672051" },
