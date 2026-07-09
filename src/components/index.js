@@ -16,4 +16,5 @@ export { default as TrustPilot } from "./reviews/TrustPilotReview";
 export { default as NRI } from "./OtherSections/NRI";
 export { default as Foreinsic } from "./OtherSections/Foreinsic";
 export { default as TranslatorWidget } from "./TranslatorWidget/TranslatorWidget";
+export { default as BannerPopup } from "./BannerPopup/BannerPopup";
 
